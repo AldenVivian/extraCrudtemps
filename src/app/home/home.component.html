@@ -1,0 +1,50 @@
+<div class="container"> 
+    <form [formGroup]="depandpro" (ngSubmit)="onSubmit()">
+      <h3>Select school</h3>
+      <select formControlName="school_id">
+        <option value="">Select School</option>
+        <option *ngFor="let school of Schools" [ngValue]=" school.id "> {{ school.school_name }} </option>
+      </select>
+      <br><br>
+      <h4>Enter Department Name</h4>
+      <input class="form-control" style="width: 50%" type="text" formControlName="department_name" />
+      <div class="alert alert-danger" style="width: 50%;" *ngIf="!depandpro.valid && depandpro.touched">Required Field</div>
+      <div class ="alert alert-danger"*ngIf="depandpro.controls['department_name'].errors.minlength">Must be at least 3 characters</div>
+    <div class ="alert alert-danger"*ngIf="depandpro.controls['department_name'].errors.pattern">Only Alphabets allowed(No special characters)</div>
+      <br>
+      <div formArrayName="programs">
+        <div *ngFor="let employee of programs().controls; let empIndex=index">
+          <div
+            [formGroupName]="empIndex"
+            style="border: 1px solid blue; padding: 10px; width:50%; margin: 5px;"
+          >
+            Program Name :
+            <input class="form-control" type="text" formControlName="program_name" />
+            Program Short Form:
+            <input class="form-control" type="text" formControlName="program_type" />
+     
+            <button class="btn btn-danger" (click)="removeProgram(empIndex)">Remove</button>
+           
+            </div>
+            </div>
+        
+        <button type="button" class="btn btn-warning" (click)="addProgram()">Add Program</button><br>
+      </div><br>
+      <button  class="btn btn-primary" type="submit">Submit</button>
+    </form>
+          <br><br>
+          <table id="example1" class="table table-bordered table-striped" *ngIf = "depandpro.value == null">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Department Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let school of datas; let i = index"> 
+                <td>{{ i+1 }}</td>
+                <td>{{ school.department_name }}</td>      
+              </tr>
+            </tbody>
+          </table>
+    </div>

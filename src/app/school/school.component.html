@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>Create School</h1>
+<form [formGroup]="SchoolForm">
+<div class="mb-3" >
+    <label for="schoolName" class="form-label">Enter School Name</label>
+    <input type="email" class="form-control" formControlName="school" style="width: 50%">
+    <div class="alert alert-danger" style="width: 50%;" *ngIf="!SchoolForm.valid && SchoolForm.touched">Required Field</div>
+    <div class ="alert alert-danger"*ngIf="SchoolForm.controls['school'].errors.minlength">Must be at least 3 characters</div>
+    <div class ="alert alert-danger"*ngIf="SchoolForm.controls['school'].errors.pattern">Only Alphabets allowed(No special characters)</div>
+    <br><button *ngIf="!editd" type="submit" class ="btn btn-primary"(click) = "addSchool()">Create</button>
+    <button *ngIf="editd" type="submit" class ="btn btn-primary" (click)="updateSchooldata()">Update</button>
+</div>
+</form>
+
+<h2>Existing schools</h2>
+   
+    
+    <table id="example1" class="table table-bordered table-striped" *ngIf = "SchoolForm.value == null"> <!--*ngIf = "SchoolForm.value == null" (To Enable and Disable the visibility of the Table)-->
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>School Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let school of data;let i = index">
+            <td >{{ i+1 }}</td>
+            <td >{{ school.school_name }}</td>
+            <td><button type="button"  class="btn btn-danger" (click)="delete(i)">Delete</button>|
+            <button type="button"  class="btn btn-success" (click)="editSchool(i)">Edit</button></td>
+         </tr>
+        </tbody>
+      </table>
+</div>
+

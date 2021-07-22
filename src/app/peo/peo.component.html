@@ -1,0 +1,75 @@
+<div class="container text-center">
+    <h1 class="m-5">PEO Template</h1>
+    
+    <form [formGroup]="peoForm" class="form-group">
+    
+        <label class="m-2 "for="schoolnam">Schools:  </label>
+    
+      
+    
+      <select class ="btn m-2 bg-dark text-white align-middle"name="schoolnam" id="schoolnam">
+        <option value="" disabled selected hidden>Schools</option>
+          <option value="sample1">sample</option>
+          <option value="sample2">sample2</option>
+      </select>
+      
+      
+     
+    
+      <div formArrayName="progarr">
+        <div *ngFor="let item of progs.controls; let pointIndex=index" [formGroupName]="pointIndex"> 
+        <!--<label>
+          PEO {{pointIndex+1}}: <input formControlName="program" />
+        </label>-->
+        <label for="descr">PEO{{pointIndex+1}}</label>
+        
+        <textarea name="descr" id="descr" fomrControlName ="program" cols="30" rows="2" class="form-control-sm m-3 "></textarea>
+        <button type="button" class ="btn btn-danger m-1" (click)="deleteProgram(pointIndex)">Delete</button>
+        </div>
+        <button type="button"class ="btn btn-primary m-1" (click)="addProgram()">Add Program</button>
+      </div>
+    
+    </form>
+    {{ this.peoForm.value | json}}
+    {{ this.peoForm.value.departname | json}}
+    </div>
+    <p></p>
+    <div class="container">
+    <table class="table text-center table-bordered table-striped">
+        <thead>
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">PEO</th>
+            <th scope="col">Description</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td></td>
+            <td></td>
+            
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td></td>
+            <td></td>
+            
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td></td>
+            <td></td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    
+    
+    
+    
+    
+    

@@ -9,12 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { PeoComponent } from './peo/peo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SchoolComponent,
-    HomeComponent
+    HomeComponent,
+    PeoComponent
   ],
   imports: [
     BrowserModule,

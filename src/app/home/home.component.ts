@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
   newProgram(): FormGroup {
     return this.fb.group({
       program_name: new FormControl('',[Validators.minLength(3),Validators.pattern("[a-zA-Z][a-zA-Z ]+$")]),//only alphabets, min length - 3
-      program_type: new FormControl('',[Validators.minLength(3),Validators.pattern("[a-zA-Z][a-zA-Z ]+$"),Validators.maxLength(4)])//only alphabets, min length - 3, max length-4
+      program_type: new FormControl('',[Validators.minLength(3),Validators.pattern("[a-zA-Z][a-zA-Z ]+$"),Validators.maxLength(5)])//only alphabets, min length - 3, max length-4
      });
   }
 
